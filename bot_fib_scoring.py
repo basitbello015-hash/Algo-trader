@@ -1115,7 +1115,6 @@ class BotController:
         balance = None
         candidate_attempts = [
             (["get_wallet_balance", "query_wallet_balance"], {"accountType": "UNIFIED"}),
-            (["get_wallet_balance", "query_wallet_balance"], {"accountType": "SPOT"}),
         ]
         raw_preview = {}
         for methods, params in candidate_attempts:
