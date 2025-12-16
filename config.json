@@ -10,7 +10,7 @@
   "tradeAllocation": 100,
   "minTradeAmount": 5.0,
   "scanInterval": 10,
-  "useMarketOrder": true,
+  "useMarketOrder": false,
   "testOnTestnet": false,
   "dryRun": true,
   "maxTradesPerDay": 30,
