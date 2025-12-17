@@ -17,5 +17,6 @@
   "maxSlippagePct": 0.5,
   "minOrderBookDepthUsd": 1000.0,
   "maxRequestsPerSecond": 10,
-  "maxRequestsPerMinute": 100
+  "maxRequestsPerMinute": 100,
+  "autoStartBot": true
 }
