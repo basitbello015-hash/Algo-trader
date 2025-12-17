@@ -12,7 +12,6 @@ from fastapi.responses import HTMLResponse
 # Bot controller & State
 from bot_fib_scoring import ALLOWED_COINS
 from app_state import bc  # Import global bot controller
-from config import config
 
 # Routers
 from routes.config_routes import router as config_router
@@ -165,10 +164,19 @@ app.include_router(history_router, prefix="/api/history", tags=["History"])
 # -----------------------
 @app.on_event("startup")
 async def startup_event():
-    """Auto-start bot on server startup if enabled in config"""
-    if config.get("autoStartBot", True):
-        bc.start()
-        print("Bot auto-started on server startup")
+    """Auto-start bot on server startup"""
+    try:
+        # Hardcode auto-start to True
+        auto_start = True  # Simply set this to True
+        
+        if auto_start:
+            print("Starting bot...")
+            bc.start()
+            print("✓ Bot auto-started successfully")
+        else:
+            print("Bot auto-start is disabled")
+    except Exception as e:
+        print(f"✗ Failed to start bot: {str(e)}")
         
 
 # -----------------------
