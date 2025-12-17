@@ -164,8 +164,11 @@ app.include_router(history_router, prefix="/api/history", tags=["History"])
 # -----------------------
 @app.on_event("startup")
 async def startup_event():
-    asyncio.create_task(price_loop())
-    print("✅ MGX Trading Bot Backend started successfully!")
+    """Auto-start bot on server startup if enabled in config"""
+    if CONFIG.get("autoStartBot", True):
+        bc.start()
+        print("Bot auto-started on server startup")
+        
 
 # -----------------------
 # Test write endpoint
