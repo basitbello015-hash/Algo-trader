@@ -4,5 +4,7 @@
     "name": "Bello",
     "exchange": "bybit",
     "api_key": "NdfqU1fcC698nRiYAy",
-    "api_secret": "998uZwzP2j5MXEk21mza8rAoAQ0ZFJpdWMxU"
+    "api_secret": "998uZwzP2j5MXEk21mza8rAoAQ0ZFJpdWMxU",
+    "monitoring": true,
+    "position": "closed"
   }]
