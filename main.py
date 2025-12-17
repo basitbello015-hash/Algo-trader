@@ -12,6 +12,7 @@ from fastapi.responses import HTMLResponse
 # Bot controller & State
 from bot_fib_scoring import ALLOWED_COINS
 from app_state import bc  # Import global bot controller
+from config import config
 
 # Routers
 from routes.config_routes import router as config_router
