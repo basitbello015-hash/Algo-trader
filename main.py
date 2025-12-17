@@ -165,7 +165,7 @@ app.include_router(history_router, prefix="/api/history", tags=["History"])
 @app.on_event("startup")
 async def startup_event():
     """Auto-start bot on server startup if enabled in config"""
-    if CONFIG.get("autoStartBot", True):
+    if config.get("autoStartBot", True):
         bc.start()
         print("Bot auto-started on server startup")
         
