@@ -161,6 +161,34 @@ async def price_websocket_endpoint(websocket: WebSocket):
     except:
         ws_manager.disconnect(websocket)
 
+@app.get("/api/bot/debug")
+def bot_debug():
+    """Debug endpoint to check bot status and configuration"""
+    from app_state import bc
+    
+    accounts = bc.load_accounts() if hasattr(bc, 'load_accounts') else []
+    
+    return {
+        "bot_running": bc.is_running() if hasattr(bc, 'is_running') else False,
+        "accounts_count": len(accounts),
+        "accounts": [
+            {
+                "name": a.get("name"),
+                "monitoring": a.get("monitoring"),
+                "position": a.get("position"),
+                "validated": a.get("validated"),
+                "balance": a.get("balance")
+            }
+            for a in accounts
+        ],
+        "config": {
+            "dry_run": TRADE_SETTINGS.get("dry_run", True),
+            "use_market_order": TRADE_SETTINGS.get("use_market_order", False),
+            "trade_allocation_pct": TRADE_SETTINGS.get("trade_allocation_pct", 100),
+            "max_trades_per_day": TRADE_SETTINGS.get("max_trades_per_day", 30)
+        },
+        "timestamp": datetime.now().isoformat()
+    }
 # -----------------------
 # Price Fetch Loop
 # -----------------------
